@@ -1,27 +1,25 @@
 import axios from "axios";
-
-const fetchData = async () => {
+// fetch emoji from giphy api
+export const fetchData = async () => {
+  let response;
+  const url =
+    "https://api.giphy.com/v2/emoji?api_key=x600WWV0cF8CXazg47alOC5HewB5g0gr&limit=6&offset=0";
   await axios
     .get(url)
     .then((res) => {
-      const dog = {
-        id: res.data.data.id,
-        imgUrl: res.data.data.images.original.url,
-      };
-      console.log(JSON.stringify(dog));
-
-      return dog;
+      response = res.data.data;
     })
-    .catch((error) => console.log(error));
+    .catch(() => {
+      console.log("error");
+    });
+  return response;
 };
-const url =
-  "https://api.giphy.com/v1/gifs/random?api_key=x600WWV0cF8CXazg47alOC5HewB5g0gr&tag=dog&rating=g";
-export const getData = async () => {
-  const arr = [];
-  for (let index = 0; index < 12; index++) {
-    const res = await fetchData();
-    arr.push(res);
-  }
-  return arr;
+// destructuring data and duplicate it
+export const handleResponseData = async (data) => {
+  const duplicatedData = data.concat(data);
+  return duplicatedData.map((e, index) => ({
+    newId: index,
+    name: e.id,
+    imgUrl: e.images.fixed_height.url,
+  }));
 };
-fetchData();

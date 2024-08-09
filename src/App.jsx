@@ -1,29 +1,15 @@
-import { useState } from "react";
+// App.js
+// Renders the GameBoardComponent
+import React, { useState } from "react";
 import "./App.css";
-import RulesCard from "./components/RulesCard";
-import PlayCard from "./components/PlayCard";
+import GameBoard from "./components/GameBoard";
+import Rules from "./components/Rules";
 function App() {
-  const [score, setScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
-  const [showPlayCard, setShowPlayCard] = useState(false);
-
-  const handlePlay = () => {
-    setShowPlayCard(true);
-  };
-  const handleReTry = () => {
-    setShowPlayCard(false);
-  };
+  const [isPlay, setIsPlay] = useState(false);
+  const handlePlay = () => setIsPlay(true);
   return (
-    <div className="container">
-      {showPlayCard ? (
-        <PlayCard reTry={handleReTry} />
-      ) : (
-        <RulesCard onPlay={handlePlay} />
-      )}
-      <div className="score__board">
-        <h2>Score: {score}</h2>
-        <h2>Best Score:{bestScore}</h2>
-      </div>
+    <div className="App">
+      {!isPlay ? <Rules handlePlay={handlePlay} /> : <GameBoard />}
     </div>
   );
 }

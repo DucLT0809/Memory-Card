@@ -1,16 +1,169 @@
-.container {
-  background: rgb(84, 13, 110);
-  background: linear-gradient(
-    315deg,
-    rgba(84, 13, 110, 1) 0%,
-    rgba(238, 66, 102, 1) 30%,
-    rgba(255, 210, 63, 1) 50%,
-    rgba(243, 252, 240, 1) 78%
-  );
-  width: 100%;
+/* App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
   height: 100%;
+  width: 100%;
+  font-family: cursive;
+  background-color: #474350;
+  display: flex;
+  flex-direction: column;
+}
+/* Css for rule container */
+.rule--container {
+  display: flex;
+  flex-direction: column;
+  width: 50rem;
+  align-self: center;
+  margin: auto;
+  color: #474350;
+  background-color: #f3b3a6;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 1rem;
+}
+.rule--container h1 button {
+  align-self: center;
+}
+.rule--container h1 {
+  margin-top: 2rem;
+}
+.rule--container p {
+  text-align: start;
+  margin: 2rem;
+}
+.rule--container button {
+  margin-bottom: 3rem;
+  width: 50%;
+  align-self: center;
+  height: 2rem;
+  background-color: #0066ff;
+  border: none;
+  color: white;
+  font-size: large;
+  font-family: cursive;
+  border-radius: 0.5rem;
+}
+.rule--container button:hover {
+  background-color: #055ee4;
+  cursor: pointer;
+}
+/* CSS for GameBoard component */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.container h1 {
+  align-self: start;
+  font-size: 2.5rem;
+  color: rgb(247, 247, 247);
+}
+
+.bottom--container {
+  display: flex;
   flex-direction: column;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+.button {
+  height: 2rem;
+  width: 25rem;
+  align-self: center;
+  background-color: #0066ff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: none;
+  font-family: cursive;
+  font-weight: 900;
+  font-size: large;
+  border-radius: 0.5rem;
+  color: white;
+  margin-top: 1rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.5rem;
+}
+.button:hover {
+  background-color: #055ee4;
+  cursor: pointer;
+}
+
+.board {
+  display: grid;
+  margin: auto;
+  margin-top: 3rem;
+  grid-template-columns: repeat(4, 9rem);
+  place-items: center;
+  row-gap: 2rem;
+  column-gap: 6rem;
+}
+/* CSS for Card component */
+
+/* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-box {
+  width: 13rem;
+  height: 13rem;
+  border-radius: 2rem;
+
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+  position: relative;
+
+  border-radius: 2rem;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+/* .flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+} */
+.rotate {
+  transform: rotateY(180deg);
+  transition: transform 1s ease-in-out;
+}
+/* Position the front and back side */
+.flip-box-front,
+.flip-box-back {
+  position: absolute;
+  border-radius: 2rem;
+
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box-front {
+  background-color: #f3b3a6;
+
+  color: black;
+}
+
+/* Style the back side */
+.flip-box-back {
+  background-color: #fafac6;
+  color: white;
+  transform: rotateY(180deg);
 }
