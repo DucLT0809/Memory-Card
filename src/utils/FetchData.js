@@ -2,8 +2,8 @@ import axios from "axios";
 // fetch emoji from giphy api
 export const fetchData = async () => {
   let response;
-  const url =
-    "https://api.giphy.com/v2/emoji?api_key=x600WWV0cF8CXazg47alOC5HewB5g0gr&limit=6&offset=0";
+  const url = import.meta.env.VITE_API_ENDPOINT;
+
   await axios
     .get(url)
     .then((res) => {
