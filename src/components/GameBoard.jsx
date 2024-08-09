@@ -45,9 +45,6 @@ function GameBoard() {
   // compare 2 selected card
   React.useEffect(() => {
     if (firstCard && secondCard) {
-      console.log("first card: ", firstCard);
-      console.log("second card: ", secondCard);
-
       setStopFlip(true);
       if (firstCard.name === secondCard.name) {
         setCardsArray((prevArray) => {
